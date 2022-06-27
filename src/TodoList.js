@@ -29,10 +29,11 @@ class TodoList extends Component {
   render() {
     return (
       <div className="TodoList">
-        <h1>Todo List!</h1>
-        <p>A Simple React Todo List App</p>
-        <hr />
-        <div className="item-list">
+        <h1>
+          Todo List!<span>A Simple React Todo List App</span>
+        </h1>
+
+        <ul className="item-list">
           {this.state.list.map((item) => (
             <Todo
               key={item.id}
@@ -41,7 +42,7 @@ class TodoList extends Component {
               updateItem={this.updateItem}
             />
           ))}
-        </div>
+        </ul>
         <TodoForm addItem={this.addItem} />
       </div>
     );

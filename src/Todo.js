@@ -43,7 +43,7 @@ class Todo extends Component {
       <div className="Todo">
         {this.state.isUpdating ? (
           <>
-            <form onSubmit={this.handleUpdate}>
+            <form onSubmit={this.handleUpdate} className="Todo-edit-form">
               <input
                 onChange={this.handleChange}
                 value={this.state.updatedTask}
@@ -52,24 +52,25 @@ class Todo extends Component {
             </form>
           </>
         ) : (
-          <>
-            <span
-              className={this.state.isStrike ? "strike" : ""}
-              onClick={this.handleStrike}
-            >
-              {this.state.updatedTask}
-            </span>
-            <button
-              onClick={(e) => {
-                this.setState({ isUpdating: true });
-              }}
-            >
-              <RiPencilFill />
-            </button>
-            <button onClick={this.handleDelete}>
-              <MdDeleteOutline />
-            </button>
-          </>
+          <li
+            className={
+              this.state.isStrike ? "Todo-task completed" : "Todo-task"
+            }
+          >
+            <p onClick={this.handleStrike}>{this.state.updatedTask}</p>
+            <div className="Todo-buttons">
+              <button
+                onClick={(e) => {
+                  this.setState({ isUpdating: true });
+                }}
+              >
+                <RiPencilFill />
+              </button>
+              <button onClick={this.handleDelete}>
+                <MdDeleteOutline />
+              </button>
+            </div>
+          </li>
         )}
       </div>
     );
