@@ -20,6 +20,7 @@ class Todo extends Component {
 
   handleUpdate = (e) => {
     e.preventDefault();
+    if (this.state.updatedTask === "") return;
     this.props.updateItem({
       id: this.props.item.id,
       task: this.state.updatedTask,

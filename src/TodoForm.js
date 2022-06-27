@@ -12,8 +12,13 @@ class TodoForm extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    this.props.addItem({ id: Math.random() * 1000000, task: this.state.task });
-    this.setState({ task: "" });
+    if (this.state.task !== "") {
+      this.props.addItem({
+        id: Math.random() * 1000000,
+        task: this.state.task,
+      });
+      this.setState({ task: "" });
+    }
   };
 
   render() {
