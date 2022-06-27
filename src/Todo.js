@@ -11,6 +11,7 @@ class Todo extends Component {
   state = {
     isUpdating: false,
     updatedTask: this.props.item.task,
+    isStrike: false,
   };
 
   handleDelete = (e) => {
@@ -32,6 +33,10 @@ class Todo extends Component {
     this.setState({ updatedTask: e.target.value });
   };
 
+  handleStrike = (e) => {
+    this.setState((st) => ({ isStrike: !st.isStrike }));
+  };
+
   render() {
     return (
       <div className="Todo">
@@ -47,7 +52,12 @@ class Todo extends Component {
           </>
         ) : (
           <>
-            <span>{this.state.updatedTask}</span>
+            <span
+              className={this.state.isStrike ? "strike" : ""}
+              onClick={this.handleStrike}
+            >
+              {this.state.updatedTask}
+            </span>
             <button
               onClick={(e) => {
                 this.setState({ isUpdating: true });
